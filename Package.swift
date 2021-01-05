@@ -11,12 +11,14 @@ let package = Package(
         .library(
             name: "TapeServer",
             targets: ["TapeServer"]),
+        .executable(name: "TapeServerInstaller", targets: ["TapeServerInstaller"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/blanu/Tape", from: "0.0.2"),
-        .package(url: "https://github.com/OperatorFoundation/Transmission", from: "0.1.9")
+        .package(url: "https://github.com/OperatorFoundation/Transmission", from: "0.1.9"),
+        .package(url: "https://github.com/OperatorFoundation/Gardener", from: "0.0.1"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -24,6 +26,9 @@ let package = Package(
         .target(
             name: "TapeServer",
             dependencies: ["Tape", "Transmission"]),
+        .target(
+            name: "TapeServerInstaller",
+            dependencies: ["Gardener"]),
         .testTarget(
             name: "TapeServerTests",
             dependencies: ["TapeServer"]),
